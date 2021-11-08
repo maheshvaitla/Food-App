@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+
+
+     h3 {
+        color: rgb(37, 175, 111);
+        font-family: cursive;
+        font-size: 25px;
+        text-decoration: underline;
+        text-align: center;
+    }
+
+
+    h3:hover {
+        background-color: rgb(218, 228, 228);
+        border: brown;
+        border-radius: 20px;
+    }
+    
+    p {
+        font-size: medium;
+        font-family: sans-serif;
+    }
+    #visible {
+        display: grid;
+        grid-template-columns: repeat(2,50%);
+        gap: 40px;
+        border: 1px solid black;
+}
+
+h4 {
+    color: blue;
+}
+
+</style>
+<body>
+    <div id="cart" >
+        <button ><a style="text-decoration: none;" href="cart.html">Go To cart</a></button>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3,30%); grid-gap: 30px; border: 1px solid blueviolet; width: 99%; margin: 1%;" id="visible">
+</div>
+</body>
+</html>
+<script type="module">
+   
+    import {getData,append} from "./scripts/showData.js";
+
+    let response =getData(`https://www.themealdb.com/api/json/v1/1/categories.php`)
+    response
+    .then((res)=> {
+
+        let visible = document.getElementById("visible")
+        console.log(res);
+
+       
+
+        append(res,visible);
+        
+
+    })
+    .catch((err)=>{
+        console.log(err);
+    })
+
+    
+
+</script>
